@@ -27,6 +27,26 @@ async function LoadImages() {
 	}
 }
 
+const promotionalTexts = [
+	"Craving something delicious? Don't wait-satisfy your hunger with just a click! Order now and enjoy fresh, flavorful food delivered straight to your door",
+	"Hungry for more? Explore our sweet treats and savory snacks. Every bite is a moment of pure bliss!",
+	"Need a pick-me-up? Our coffee is brewed to perfection. Sip, relax, and let the warmth embrace you.",
+	"Sharing is caring! Grab a combo and enjoy a delightful feast with your loved ones at Cozy Crumbs.",
+	"Discover your new favorite flavor. From classic bakes to trending sips, there's always something special waiting for you."
+];
+
+let currentTextIndex = 0;
+
+function CyclePromotionalText() {
+	const textElement = document.getElementById('order-text');
+	if (textElement) {
+		currentTextIndex = (currentTextIndex + 1) % promotionalTexts.length;
+		textElement.textContent = promotionalTexts[currentTextIndex];
+	}
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 	LoadImages();
+	CyclePromotionalText();
+	setInterval(CyclePromotionalText, 300000);
 });
