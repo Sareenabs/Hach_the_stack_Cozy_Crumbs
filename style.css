@@ -113,7 +113,7 @@ gap: 10px;
     
 }
 .section-fouur div{
-    background-colour: rgba(0, 0, 0, 0.482);
+    background-color: rgba(0, 0, 0, 0.482);
     border-radius: 20px;
 }
 .order{
@@ -130,7 +130,7 @@ gap: 10px;
     padding: 20px;
     margin: 20px;
     border-radius: 20px;
-    background-colour:rgb(161, 82, 95);
+    background-color:rgb(161, 82, 95);
     color: rgb(255, 255, 255);
     font-family: cursive;
     font-weight:700;
