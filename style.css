@@ -625,3 +625,40 @@ footer {
     font-weight: bold;
     cursor: pointer;
 }
+.filter-controls {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#menuSearch {
+    width: min(400px, 90%);
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: 2px solid #ffe0f0;
+    outline: none;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.dietary-filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2px;
+}
+
+.diet-btn {
+    background: #f0fdf4; /* Light green for vegan feel */
+    border: 1px solid #dcfce7;
+    color: #166534;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.diet-btn:hover {
+    background: #dcfce7;
+    transform: translateY(-2px);
+}

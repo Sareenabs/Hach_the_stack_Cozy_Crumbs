@@ -13,19 +13,19 @@ document.getElementById('reservation-form').addEventListener('submit', function(
     this.reset();
 });
 const menuData = [
-    { name: "Vancho Cake", category: "Cakes", price: "550", img: "1.jpg" },
-    { name: "Matilda Choclate Cake", category: "Cakes", price: "440", img: "2.jpg" },
-    { name: "Red velvet cheese cake", category: "Cakes", price: "600", img: "3.jpg" },
-    { name: "Chocolate cupcake", category: "Cupcakes", price: "200", img: "4.jpg" },
-    { name: "Choco pancake", category: "Dessert", price: "300", img: "5.jpg" },
-    { name: "Choco Cookies", category: "Dessert", price: "250", img: "6.jpg" },
-    { name: "Caramel Cappuchino", category: "Beverages", price: "200", img: "7.jpg" },
-    { name: "Korean Ramen Noodles", category: "Pasta&Noodles", price: "300", img: "9.jpg" },
-    { name: "Pasta", category: "Pasta&Noodles", price: "300", img: "10.jpg" },
-    { name: "Greek salad", category: "Salads&Bowls", price: "300", img: "11.jpg" },
-    { name: "Chicken Wrap", category: "Sandwiches&Wraps", price: "250", img: "12.jpg" },
-    { name: "Club Sandwich", category: "Sandwiches&Wraps", price: "200", img: "13.jpg" },
-    { name: "Red Velvet Cupcake", category: "Cupcakes", price: "200", img: "1.jpg" }
+    { name: "Vancho Cake", category: "Cakes", price: "550", img: "1.jpg",dietary: [] },
+    { name: "Matilda Choclate Cake", category: "Cakes", price: "440", img: "2.jpg",dietary: ["vegan","gluten free"] },
+    { name: "Red velvet cheese cake", category: "Cakes", price: "600", img: "3.jpg",dietary: ["vegan"] },
+    { name: "Chocolate cupcake", category: "Cupcakes", price: "200", img: "4.jpg",dietary: ["vegan"] },
+    { name: "Choco pancake", category: "Dessert", price: "300", img: "5.jpg",dietary: ["vegan"] },
+    { name: "Choco Cookies", category: "Dessert", price: "250", img: "6.jpg",dietary: ["vegan"] },
+    { name: "Caramel Cappuchino", category: "Beverages", price: "200", img: "7.jpg",dietary: [] },
+    { name: "Korean Ramen Noodles", category: "Pasta&Noodles", price: "300", img: "9.jpg",dietary: [] },
+    { name: "Pasta", category: "Pasta&Noodles", price: "300", img: "10.jpg",dietary: [] },
+    { name: "Greek salad", category: "Salads&Bowls", price: "300", img: "11.jpg",dietary: ["vegan"] },
+    { name: "Chicken Wrap", category: "Sandwiches&Wraps", price: "250", img: "12.jpg",dietary: [] },
+    { name: "Club Sandwich", category: "Sandwiches&Wraps", price: "200", img: "13.jpg",dietary: [] },
+    { name: "Red Velvet Cupcake", category: "Cupcakes", price: "200", img: "1.jpg",dietary: ["vegan"] }
     
 ];
 
@@ -135,4 +135,66 @@ document.addEventListener('DOMContentLoaded', () => {
             this.reset();
         });
     }
+        // Dietary Buttons
+      document.querySelectorAll('.diet-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tag = btn.getAttribute('data-tag'); // Make sure HTML has data-tag="Vegan"
+            if (tag === "All") {
+                renderMenu(menuData);
+            } else {
+                const results = menuData.filter(item => item.dietary.includes(tag));
+                renderMenu(results);
+            }
+        });
+    });
+
+   
+});
+
+
+
+function renderMenu(itemsToDisplay) {
+    const container = document.querySelector('.items'); 
+    container.innerHTML = ''; 
+
+    itemsToDisplay.forEach(item => {
+        const itemElement = `
+            <div class="food-card">
+                <div class="card-img-wrapper">
+                    <img src="${item.img}" alt="${item.name}" class="food-img">
+                    <span class="category-badge">${item.category}</span>
+                </div>
+                <div class="card-content">
+                    <h3>${item.name}</h3>
+                    <div class="card-footer">
+                        <span class="price">₹${item.price}</span>
+                        <button class="order-btn" onclick="addToCart('${item.name}', '${item.price}')">Add +</button>
+                    </div>
+                </div>
+            </div>
+        `;
+        container.innerHTML += itemElement;
+    });
+}
+
+// Search Functionality
+document.getElementById('menuSearch').addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase();
+    const results = menuData.filter(item => 
+        item.name.toLowerCase().includes(query)
+    );
+    renderMenu(results);
+});
+
+// Dietary Filtering
+document.querySelectorAll('.diet-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const tag = btn.getAttribute('data-tag');
+        if (tag === "All") {
+            renderMenu(menuData);
+        } else {
+            const results = menuData.filter(item => item.dietary.includes(tag));
+            renderMenu(results);
+        }
+    });
 });
