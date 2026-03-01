@@ -45,9 +45,32 @@ function CyclePromotionalText() {
 	}
 }
 
+const menuItems = [
+	"Cakes",
+	"Cupcakes",
+	"Desserts",
+	"Drinks",
+	"Beverages",
+	"Pasta&Noodles",
+	"Sandwiches&Wraps",
+	"Salads&Bowls"
+];
+
+function LoadMenuItems() {
+	const menuContainer = document.getElementById('items');
+	if (menuContainer) {
+		menuItems.forEach(item => {
+			const button = document.createElement('button');
+			button.textContent = item;
+			menuContainer.appendChild(button);
+		});
+	}
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 	LoadImages();
 	CyclePromotionalText();
+	LoadMenuItems();
 	setInterval(CyclePromotionalText, 300000);
 });
 document.getElementById('reservation-form').addEventListener('submit', function(e) {
