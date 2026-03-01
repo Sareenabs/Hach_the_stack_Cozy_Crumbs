@@ -487,6 +487,8 @@ button {
     box-shadow: 0 10px 25px rgba(255, 183, 197, 0.15);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid #ffe0f0;
+    display: flex;
+    flex-direction: column;
 }
 
 .food-card:hover {
@@ -497,7 +499,8 @@ button {
 /* Image Section */
 .card-img-wrapper {
     position: relative;
-    height: 200px;
+    height: 220px; /* Fixed height for consistent look */
+    width: 100%;
     overflow: hidden;
 }
 
@@ -506,6 +509,8 @@ button {
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
+    display: block;
+    
 }
 
 .food-card:hover .food-img {
@@ -528,6 +533,7 @@ button {
 /* Text Content */
 .card-content {
     padding: 20px;
+    
 }
 
 .card-content h3 {
