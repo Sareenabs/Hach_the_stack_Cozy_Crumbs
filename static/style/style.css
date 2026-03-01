@@ -698,3 +698,28 @@ button {
     max-width: 600px;
     border-left: 5px solid #ffb7c5;
 }
+.stars {
+    display: flex;
+    flex-direction: row-reverse; /* Allows us to use the ~ selector easily */
+    justify-content: center;
+    gap: 5px;
+}
+
+
+.stars input { display: none; } /* Hide the actual radio buttons */
+
+
+.stars label {
+    font-size: 30px;
+    color: #b593a5;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+
+/* Color stars on hover and when checked */
+.stars label:hover,
+.stars label:hover ~ label,
+.stars input:checked ~ label {
+    color: #f7f018;
+}
