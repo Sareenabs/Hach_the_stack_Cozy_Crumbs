@@ -30,7 +30,7 @@ const menuData = [
 ];
 
 let cart = [];
-
+let favourites = [];
 
 function addToCart(name, price) {
     cart.push({ name: name, price: price });
@@ -41,7 +41,21 @@ function addToCart(name, price) {
     alert(`${name} added to your tray! 🧁`);
 }
 
+function toggleFavourite(name) {
 
+    const index = favourites.indexOf(name);
+
+    if (index > -1) {
+        favourites.splice(index, 1);
+    } else {
+        favourites.push(name);
+    }
+
+    document.getElementById('fav-count').textContent = favourites.length;
+
+    // Re-render menu to update heart UI
+    renderMenu(menuData);
+}
 
 
 function openCart() {
@@ -98,9 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const itemElement = `
                 <div class="food-card">
                     <div class="card-img-wrapper">
-                        <img src="${item.img}" alt="${item.name}" class="food-img">
+                     <img src="${item.img}" alt="${item.name}" class="food-img">
                         <span class="category-badge">${item.category}</span>
                     </div>
+
                     <div class="card-content">
                         <h3>${item.name}</h3>
                         <div class="card-footer">
@@ -198,3 +213,5 @@ document.querySelectorAll('.diet-btn').forEach(btn => {
         }
     });
 });
+
+
