@@ -25,23 +25,28 @@ const menuData = [
     { name: "Greek salad", category: "Salads&Bowls", price: "₹300", img: "11.jpg" },
     { name: "Chicken Wrap", category: "Sandwiches&Wraps", price: "₹250", img: "12.jpg" },
     { name: "Club Sandwich", category: "Sandwiches&Wraps", price: "₹200", img: "13.jpg" },
-    { name: "Red Velvet Cupcake", category: "Cupcakes", price: "₹200", img: "14.jpg" },
+    { name: "Red Velvet Cupcake", category: "Cupcakes", price: "₹200", img: "1.jpg" }
     
 ];
 function filterMenu(category) {
-    const menuItemsContainer = document.querySelector('.items');
+    const menuItemsContainer = document.querySelector('.items'); // Use a dedicated div for cards
     menuItemsContainer.innerHTML = ''; 
 
     const filtered = menuData.filter(item => item.category === category);
 
     filtered.forEach(item => {
         const itemElement = `
-            <div class="menu-card">
-                <img src="${item.img}" alt="${item.name}" class="menu-img">
-                <div class="menu-info">
+            <div class="food-card">
+                <div class="card-img-wrapper">
+                    <img src="${item.img}" alt="${item.name}" class="food-img">
+                    <span class="category-badge">${item.category}</span>
+                </div>
+                <div class="card-content">
                     <h3>${item.name}</h3>
-                    <p class="price">${item.price}</p>
-                    <button class="add-fav">❤️ Favorite</button>
+                    <div class="card-footer">
+                        <span class="price">${item.price}</span>
+                        <button class="order-btn">Add +</button>
+                    </div>
                 </div>
             </div>
         `;
@@ -56,3 +61,8 @@ categoryButtons.forEach(button => {
         filterMenu(category);
     });
 });
+
+
+
+
+
