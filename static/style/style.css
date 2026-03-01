@@ -487,6 +487,8 @@ button {
     box-shadow: 0 10px 25px rgba(255, 183, 197, 0.15);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid #ffe0f0;
+    display: flex;
+    flex-direction: column;
 }
 
 .food-card:hover {
@@ -497,7 +499,8 @@ button {
 /* Image Section */
 .card-img-wrapper {
     position: relative;
-    height: 200px;
+    height: 220px; /* Fixed height for consistent look */
+    width: 100%;
     overflow: hidden;
 }
 
@@ -506,6 +509,8 @@ button {
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
+    display: block;
+    
 }
 
 .food-card:hover .food-img {
@@ -528,6 +533,7 @@ button {
 /* Text Content */
 .card-content {
     padding: 20px;
+    
 }
 
 .card-content h3 {
@@ -649,4 +655,46 @@ button {
     border-radius: 20px;
     font-weight: bold;
     cursor: pointer;
+}
+.section-feedback {
+    padding: 60px 20px;
+    background-color: #fffafb;
+    text-align: center;
+}
+
+#feedback-form {
+    max-width: 500px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#feedback-form input, #feedback-form textarea {
+    padding: 12px;
+    border-radius: 15px;
+    border: 2px solid #ffeef2;
+    outline: none;
+}
+
+.submit-feedback-btn {
+    background-color: #ffb7c5;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.feedback-card {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(255, 183, 197, 0.1);
+    margin: 0 auto 20px;
+    text-align: left;
+    max-width: 600px;
+    border-left: 5px solid #ffb7c5;
 }
