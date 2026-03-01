@@ -662,3 +662,61 @@ footer {
     background: #dcfce7;
     transform: translateY(-2px);
 }
+.section-feedback {
+    padding: 60px 20px;
+    background-color: #fffafb;
+    text-align: center;
+}
+
+#feedback-form {
+    max-width: 500px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#feedback-form input, #feedback-form textarea {
+    padding: 12px;
+    border-radius: 15px;
+    border: 2px solid #ffe0f0;
+    outline: none;
+}
+
+.submit-feedback-btn {
+    background-color: #f0a6b5;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.feedback-card {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(255, 183, 197, 0.1);
+    margin-bottom: 20px;
+    border-left: 5px solid #ffb7c5;
+    text-align: left;
+    max-width: 600px;
+    margin-inline: auto;
+}
+.file-label {
+    font-size: 14px;
+    color: #923c43;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.feedback-img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-top: 15px;
+    display: block;
+}
