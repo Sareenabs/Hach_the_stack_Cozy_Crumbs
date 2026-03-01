@@ -74,4 +74,3 @@ Year: 2026
 
 > “Mugs that hug, and crumbs that fall,
 > A warm delight for one and all.” ☕✨
-
