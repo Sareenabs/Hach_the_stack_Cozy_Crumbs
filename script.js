@@ -67,11 +67,63 @@ function LoadMenuItems() {
 	}
 }
 
+// MENU LOGIC WITH BACK BUTTON
 document.addEventListener('DOMContentLoaded', () => {
-	LoadImages();
-	CyclePromotionalText();
-	LoadMenuItems();
-	setInterval(CyclePromotionalText, 300000);
+    const menuItemsContainer = document.getElementById('items');
+    const categoryButtonsContainer = document.getElementById('category-buttons');
+    const backButton = document.getElementById('back-to-menu');
+
+    // Render category buttons
+    const categoryButtons = document.querySelectorAll('.category-btn');
+
+    function showCategories() {
+        categoryButtonsContainer.style.display = 'flex';
+        menuItemsContainer.innerHTML = '';
+        backButton.style.display = 'none';
+    }
+
+    function showCategoryItems(category) {
+        categoryButtonsContainer.style.display = 'none';
+        backButton.style.display = 'block';
+        menuItemsContainer.innerHTML = '';
+
+        const filtered = menuData.filter(item => item.category === category);
+
+        filtered.forEach(item => {
+            const itemElement = `
+                <div class="food-card">
+                    <div class="card-img-wrapper">
+                        <img src="static/images/${item.img}" alt="${item.name}" class="food-img">
+                        <span class="category-badge">${item.category}</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>${item.name}</h3>
+                        <div class="card-footer">
+                            <span class="price">₹${item.price}</span>
+                            <button class="order-btn" onclick="addToCart('${item.name}', '${item.price}')">Add +</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            menuItemsContainer.innerHTML += itemElement;
+        });
+    }
+
+    // Bind category buttons
+    categoryButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const category = btn.textContent.trim();
+            showCategoryItems(category);
+        });
+    });
+
+    // Back button click
+    backButton.addEventListener('click', () => {
+        showCategories();
+    });
+
+    // Initial display: show only categories
+    showCategories();
 });
 document.getElementById('reservation-form').addEventListener('submit', function(e) {
     e.preventDefault();
